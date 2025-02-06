@@ -5,6 +5,7 @@ const NumberSelect = ({ selectHandler }) => {
         <div className="numberSelectField">
             <div className="numberSelectText">Choose word lengths</div>
             <select onChange={selectHandler}>
+                <option value=""></option>
                 <option value="4">4</option>
                 <option value="5">5</option>
                 <option value="6">6</option>

@@ -5,7 +5,7 @@ import LetterInputField from "./components/LetterInputField";
 import NumberSelect from "./components/NumberSelect";
 
 const App = () => {
-    const [numOfLetters, setNumOfLetters] = useState(5);
+    const [numOfLetters, setNumOfLetters] = useState(0);
 
     const selectHandler = useCallback(
         (event) => {

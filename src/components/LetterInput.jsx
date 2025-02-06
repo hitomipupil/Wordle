@@ -1,11 +1,12 @@
 import "./LetterInput.css";
 
-const LetterInput = ({ inputHandler, value }) => {
+const LetterInput = ({ inputHandler, numberOfLEtters, value }) => {
     return (
         <input
             onChange={inputHandler}
             type="text"
             className="letterInput"
+            maxLength={numberOfLEtters}
             value={value}
         />
     );
