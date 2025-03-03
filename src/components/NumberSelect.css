@@ -1,9 +1,0 @@
-.numberSelectField {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 50px;
-}
-
-.numberSelectText {
-    margin-right: 10px;
-}
