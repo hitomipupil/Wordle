@@ -25,7 +25,7 @@ const Input = ({
             }
             onKeyDown={handleKeyDown}
             disabled={isDisabled}
-            // style={{ backgroundColor: backgroundcolor[inputIdx]}}
+            style={{ backgroundColor: backgroundcolor }}
             value={inputLetter}
         />
     );

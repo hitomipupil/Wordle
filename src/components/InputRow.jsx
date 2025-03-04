@@ -11,48 +11,35 @@ const InputRow = ({
     arrAnswer,
     inputRowArr
 }) => {
-    const [backgroundcolor, setBackgroundcolor] = useState([]);
-
     const isNotCurrentRow = rowIdx !== currentRow;
     const isAppDisaplbed = isAppDisabled;
     const shouldDisalbeInput = isAppDisaplbed || isNotCurrentRow;
 
-    // const backgroundcolorHandler = () => {
-    //     input.map((inputLetter) => {
-    //         // when the letter is included in the answer,
-    //         if (arrAnswer.includes(inputLetter)) {
-    //             if ( // if the positions are the same,
-    //                 input.indexOf(inputLetter) ===
-    //                 arrAnswer.findIndex((str) => str === inputLetter)
-    //             ) {
-    //                 backgroundcolor.push("green")
-    //             } else { // when the position is different
-    //                 backgroundcolor.push("yellow");
-    //             }
-    //         } else { // when the letter is not included in the answer
-    //             backgroundcolor.push("gray");
-    //         }
-    //     });
-    // };
+    const shouldColorInput = isAppDisabled || rowIdx < currentRow;
+
+    const color = (inputLetter, idx) => {
+        if (shouldColorInput) {
+            if (inputLetter === arrAnswer[idx]) {
+                return "green";
+            } else {
+                return "gray";
+            }
+        }
+    };
 
     return (
         <div id={rowIdx}>
-            {inputRowArr.map(
-                (
-                    inputLetter,
-                    idx // show 3 (= length of inputRowArr) inputs
-                ) => (
-                    <Input
-                        rowIdx={rowIdx}
-                        inputIdx={idx}
-                        key={idx}
-                        inputHandler={inputHandler}
-                        isDisabled={shouldDisalbeInput}
-                        backgroundcolor={backgroundcolor}
-                        inputLetter={inputLetter}
-                    />
-                )
-            )}
+            {inputRowArr.map((inputLetter, idx) => (
+                <Input
+                    rowIdx={rowIdx}
+                    inputIdx={idx}
+                    key={idx}
+                    inputHandler={inputHandler}
+                    isDisabled={shouldDisalbeInput}
+                    backgroundcolor={color(inputLetter, idx)}
+                    inputLetter={inputLetter}
+                />
+            ))}
         </div>
     );
 };

@@ -44,7 +44,12 @@ const App = () => {
 
     const clickHandler = () => {
         if (inputArr[currentRow].join("").length === 5) {
-            setCurrentRow((prevRow) => prevRow + 1);
+            if (currentRow === 5) {
+                setIsAppDisabled(true);
+                console.log("game over");
+            } else {
+                setCurrentRow((prevRow) => prevRow + 1);
+            }
         } else {
             console.log("Not enough letters");
         }
