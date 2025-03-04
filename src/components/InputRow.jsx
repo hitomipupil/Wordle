@@ -21,8 +21,10 @@ const InputRow = ({
         if (shouldColorInput) {
             if (inputLetter === arrAnswer[idx]) {
                 return "green";
+            } else if (arrAnswer.includes(inputLetter)) {
+                return "yellow";
             } else {
-                return "gray";
+                return "#BBB";
             }
         }
     };
