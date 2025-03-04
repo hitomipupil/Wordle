@@ -5,40 +5,54 @@ import "./InputRow.css";
 // return an array of inputs.
 const InputRow = ({
     inputHandler,
-    rowId,
+    rowIdx,
     isAppDisabled,
     currentRow,
-    backgroundcolor
+    arrAnswer,
+    inputRowArr
 }) => {
-    // const [isFocused, setIsFocused] = useState(false);
-    const arrOfInput = [1, 2, 3, 4, 5]; // show 5 inputs
+    const [backgroundcolor, setBackgroundcolor] = useState([]);
 
-    // When the page is loaded, focus on the first input
-    // useEffect(()=>{
-
-    // }, [input])
-    // const focusHandler = (id) => {
-    // if(id === 1){
-    //     setIsFocused(true);
-    // }
-    // }
-    // When the user input, move the focus to the next input
-
-    const isNotCurrentRow = rowId !== currentRow;
+    const isNotCurrentRow = rowIdx !== currentRow;
     const isAppDisaplbed = isAppDisabled;
     const shouldDisalbeInput = isAppDisaplbed || isNotCurrentRow;
 
+    // const backgroundcolorHandler = () => {
+    //     input.map((inputLetter) => {
+    //         // when the letter is included in the answer,
+    //         if (arrAnswer.includes(inputLetter)) {
+    //             if ( // if the positions are the same,
+    //                 input.indexOf(inputLetter) ===
+    //                 arrAnswer.findIndex((str) => str === inputLetter)
+    //             ) {
+    //                 backgroundcolor.push("green")
+    //             } else { // when the position is different
+    //                 backgroundcolor.push("yellow");
+    //             }
+    //         } else { // when the letter is not included in the answer
+    //             backgroundcolor.push("gray");
+    //         }
+    //     });
+    // };
+
     return (
-        <div id={rowId}>
-            {arrOfInput.map((num) => (
-                <Input
-                    inputId={`input${num}`}
-                    key={num}
-                    inputHandler={inputHandler}
-                    isDisabled={shouldDisalbeInput}
-                    backgroundcolor={backgroundcolor}
-                />
-            ))}
+        <div id={rowIdx}>
+            {inputRowArr.map(
+                (
+                    inputLetter,
+                    idx // show 3 (= length of inputRowArr) inputs
+                ) => (
+                    <Input
+                        rowIdx={rowIdx}
+                        inputIdx={idx}
+                        key={idx}
+                        inputHandler={inputHandler}
+                        isDisabled={shouldDisalbeInput}
+                        backgroundcolor={backgroundcolor}
+                        inputLetter={inputLetter}
+                    />
+                )
+            )}
         </div>
     );
 };

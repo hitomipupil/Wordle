@@ -1,26 +1,31 @@
 import "./InputGrid.css";
 import InputRow from "./InputRow";
 
-// show 6 rows
 const InputGrid = ({
     inputHandler,
     isAppDisabled,
     currentRow,
-    backgroundcolor
+    arrAnswer,
+    inputArr
 }) => {
-    const arrOfInputRows = [1, 2, 3, 4, 5, 6];
     return (
         <div id="inputGrid">
-            {arrOfInputRows.map((num) => (
-                <InputRow
-                    rowId={num}
-                    key={num}
-                    inputHandler={inputHandler}
-                    isAppDisabled={isAppDisabled}
-                    currentRow={currentRow}
-                    backgroundcolor={backgroundcolor}
-                />
-            ))}
+            {inputArr.map(
+                (
+                    innerArr,
+                    idx // show 6 rows
+                ) => (
+                    <InputRow
+                        rowIdx={idx}
+                        key={idx}
+                        inputHandler={inputHandler}
+                        isAppDisabled={isAppDisabled}
+                        currentRow={currentRow}
+                        arrAnswer={arrAnswer}
+                        inputRowArr={innerArr}
+                    />
+                )
+            )}
         </div>
     );
 };

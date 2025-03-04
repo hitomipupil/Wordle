@@ -1,6 +1,13 @@
 import "./Input.css";
 
-const Input = ({ inputHandler, isDisabled, inputId, backgroundcolor }) => {
+const Input = ({
+    inputHandler,
+    isDisabled,
+    rowIdx,
+    inputIdx,
+    backgroundcolor,
+    inputLetter
+}) => {
     const handleKeyDown = (e) => {
         if (e.key === " ") {
             e.preventDefault(); // if the user input ' ', nothing happens
@@ -9,13 +16,17 @@ const Input = ({ inputHandler, isDisabled, inputId, backgroundcolor }) => {
 
     return (
         <input
-            id={inputId}
+            id={inputIdx}
+            rowIdx={rowIdx}
             type="text"
             maxLength="1"
-            onChange={inputHandler}
+            onChange={(event) =>
+                inputHandler(rowIdx, inputIdx, event.target.value)
+            }
             onKeyDown={handleKeyDown}
             disabled={isDisabled}
-            style={{ backgroundColor: backgroundcolor }}
+            // style={{ backgroundColor: backgroundcolor[inputIdx]}}
+            value={inputLetter}
         />
     );
 };

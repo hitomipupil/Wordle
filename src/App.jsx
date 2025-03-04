@@ -5,48 +5,46 @@ import InputGrid from "./components/InputGrid";
 import Enter from "./components/Enter";
 
 const App = () => {
-    const [numOfLetters, setNumOfLetters] = useState(0);
     const [isAppDisabled, setIsAppDisabled] = useState(false);
-    const [input, setInput] = useState([]);
-    const [currentRow, setCurrentRow] = useState(1);
-    const [userAnswer, setUserAnswer] = useState("");
-    const [backgroundcolor, setBackgroundcolor] = useState("white");
+    const [inputArr, setInputArr] = useState([
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""],
+        ["", "", "", "", ""]
+    ]);
+    const [currentRow, setCurrentRow] = useState(0);
 
     const answer = "power";
     const arrAnswer = answer.split("");
 
-    const backgroundcolorHandler = () => {
-        input.map((inputLetter) => {
-            if (arrAnswer.includes(inputLetter)) {
-                if (
-                    input.indexOf(inputLetter) ===
-                    arrAnswer.findIndex((str) => str === inputLetter)
-                ) {
-                    setBackgroundcolor("green");
-                } else {
-                    setBackgroundcolor("yellow");
-                }
+    // find the right row and column in the state and replace the value to the input letter
+    const inputHandler = (rowIdx, colIdx, inputLetter) => {
+        const newArr = inputArr.map((innerArr, idx) => {
+            // iterate 6 input rows
+            if (idx === rowIdx) {
+                // if the row matches
+                const newRowArr = innerArr.map((elem, idx) => {
+                    // iterate input columns
+                    if (idx === colIdx) {
+                        // if the column matches
+                        return inputLetter; // switch the value to the input
+                    } else {
+                        return elem; // if not, don't change the value
+                    }
+                });
+                return newRowArr;
             } else {
-                setBackgroundcolor("gray");
+                return innerArr;
             }
         });
-    };
-
-    const inputHandler = (e) => {
-        const value = e.target.value.trim();
-        if (value !== "") {
-            input.push(value);
-            setUserAnswer(input);
-        }
-        console.log(input);
+        setInputArr(newArr);
     };
 
     const clickHandler = () => {
-        if (input.length === 5) {
-            setCurrentRow((id) => id + 1);
-            setInput([]);
-            console.log("You win!");
-            backgroundcolorHandler();
+        if (inputArr[currentRow].join("").length === 5) {
+            setCurrentRow((prevRow) => prevRow + 1);
         } else {
             console.log("Not enough letters");
         }
@@ -59,9 +57,10 @@ const App = () => {
                 inputHandler={inputHandler}
                 isAppDisabled={isAppDisabled}
                 currentRow={currentRow}
-                backgroundcolor={backgroundcolor}
+                arrAnswer={arrAnswer}
+                inputArr={inputArr}
             />
-            <Enter numOfLetters={numOfLetters} clickHandler={clickHandler} />
+            <Enter clickHandler={clickHandler} />
         </>
     );
 };
