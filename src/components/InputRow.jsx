@@ -19,7 +19,7 @@ const InputRow = ({
 
     const backgroundcolor = (inputLetter, idx) => {
         if (shouldColorInput) {
-            if (inputLetter === arrAnswer[idx]) {
+            if (inputLetter.toUpperCase() === arrAnswer[idx].toUpperCase()) {
                 return "green";
             } else if (arrAnswer.includes(inputLetter)) {
                 return "#ffd600";
