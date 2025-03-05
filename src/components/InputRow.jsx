@@ -17,12 +17,12 @@ const InputRow = ({
 
     const shouldColorInput = isAppDisabled || rowIdx < currentRow;
 
-    const color = (inputLetter, idx) => {
+    const backgroundcolor = (inputLetter, idx) => {
         if (shouldColorInput) {
             if (inputLetter === arrAnswer[idx]) {
                 return "green";
             } else if (arrAnswer.includes(inputLetter)) {
-                return "yellow";
+                return "#ffd600";
             } else {
                 return "#BBB";
             }
@@ -38,7 +38,8 @@ const InputRow = ({
                     key={idx}
                     inputHandler={inputHandler}
                     isDisabled={shouldDisalbeInput}
-                    backgroundcolor={color(inputLetter, idx)}
+                    backgroundcolor={backgroundcolor(inputLetter, idx)}
+                    color={shouldColorInput ? "white" : "black"}
                     inputLetter={inputLetter}
                 />
             ))}

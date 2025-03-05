@@ -6,6 +6,7 @@ const Input = ({
     rowIdx,
     inputIdx,
     backgroundcolor,
+    color,
     inputLetter
 }) => {
     const handleKeyDown = (e) => {
@@ -25,7 +26,7 @@ const Input = ({
             }
             onKeyDown={handleKeyDown}
             disabled={isDisabled}
-            style={{ backgroundColor: backgroundcolor }}
+            style={{ backgroundColor: backgroundcolor, color: color }}
             value={inputLetter}
         />
     );
