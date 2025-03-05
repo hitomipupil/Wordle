@@ -3,7 +3,7 @@ import "./Enter.css";
 const Enter = ({ clickHandler }) => {
     return (
         <button onClick={clickHandler} id="enterBtn">
-            Enter
+            Guess!
         </button>
     );
 };

@@ -19,6 +19,7 @@ const countryArr = [
     "KENYA",
     "LIBYA",
     "NIGER",
+    "NEPAL",
     "SAMOA",
     "SPAIN",
     "SYRIA",
@@ -78,7 +79,7 @@ const App = () => {
 
     const clickHandler = () => {
         const input = inputArr[currentRow].join("").toUpperCase();
-        console.log(answer, input);
+        console.log(`answer: ${answer}`);
 
         if (input.length < 5) {
             console.log("Not enough letters");

@@ -28,6 +28,7 @@ const Input = ({
             disabled={isDisabled}
             style={{ backgroundColor: backgroundcolor, color: color }}
             value={inputLetter}
+            className="input"
         />
     );
 };

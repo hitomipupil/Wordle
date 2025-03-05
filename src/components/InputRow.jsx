@@ -30,7 +30,7 @@ const InputRow = ({
     };
 
     return (
-        <div id={rowIdx}>
+        <div id={rowIdx} className="inputRow">
             {inputRowArr.map((inputLetter, idx) => (
                 <Input
                     rowIdx={rowIdx}
